@@ -12,12 +12,14 @@ namespace Gabrola\EmailNormalizer;
  */
 class EmailNormalizer
 {
-    const PLUS_TAG             = 0b0001;
-    const HYPHEN_TAG           = 0b0010;
-    const USERNAME_DOTS        = 0b0100;
-    const SUBDOMAIN_ADDRESSING = 0b1000;
-    const PLUS_AND_DOTS        = 0b0101;
-    const HYPHEN_AND_DOTS      = 0b0110;
+    const PLUS_TAG                 = 0b00001;
+    const HYPHEN_TAG               = 0b00010;
+    const USERNAME_DOTS            = 0b00100;
+    const SUBDOMAIN_ADDRESSING     = 0b01000;
+    const PLUS_AND_DOTS            = 0b00101;
+    const HYPHEN_AND_DOTS          = 0b00110;
+    const HYPHEN_TO_DOTS           = 0b10000;
+    const HYPHEN_TO_DOTS_AND_PLUS  = 0b10001;
 
     /**
      * @var array
@@ -56,6 +58,11 @@ class EmailNormalizer
                 $username = preg_replace('/\.|\+.*/', '', $username);
             } else if (($rules & self::HYPHEN_AND_DOTS) === self::HYPHEN_AND_DOTS) {
                 $username = preg_replace('/\.|-.*/', '', $username);
+            } else if (($rules & self::HYPHEN_TO_DOTS_AND_PLUS) === self::HYPHEN_TO_DOTS_AND_PLUS) {
+                $username = preg_replace('/-/', '.', $username);
+                $username = preg_replace('/\+.*/', '', $username);
+            } else if (($rules & self::HYPHEN_TO_DOTS) === self::HYPHEN_TO_DOTS) {
+                $username = preg_replace('/-/', '.', $username);
             } else if (($rules & self::PLUS_TAG) === self::PLUS_TAG) {
                 $username = preg_replace('/\+.*/', '', $username);
             } else if (($rules & self::HYPHEN_TAG) === self::HYPHEN_TAG) {

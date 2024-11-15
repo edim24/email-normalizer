@@ -22,26 +22,26 @@ class Yandex implements EmailRulesInterface
     {
         return [
             'yandex.com' => [
-                'rules' => EmailNormalizer::PLUS_TAG
+                'rules' => EmailNormalizer::PLUS_TAG | EmailNormalizer::HYPHEN_TO_DOTS
             ],
             'yandex.ru'  => [
-                'rules'   => EmailNormalizer::PLUS_TAG,
+                'rules'   => EmailNormalizer::PLUS_TAG | EmailNormalizer::HYPHEN_TO_DOTS,
                 'aliasOf' => 'yandex.com'
             ],
             'yandex.by'  => [
-                'rules'   => EmailNormalizer::PLUS_TAG,
+                'rules'   => EmailNormalizer::PLUS_TAG | EmailNormalizer::HYPHEN_TO_DOTS,
                 'aliasOf' => 'yandex.com'
             ],
             'yandex.ua'  => [
-                'rules'   => EmailNormalizer::PLUS_TAG,
+                'rules'   => EmailNormalizer::PLUS_TAG | EmailNormalizer::HYPHEN_TO_DOTS,
                 'aliasOf' => 'yandex.com'
             ],
             'yandex.kz'  => [
-                'rules'   => EmailNormalizer::PLUS_TAG,
+                'rules'   => EmailNormalizer::PLUS_TAG | EmailNormalizer::HYPHEN_TO_DOTS,
                 'aliasOf' => 'yandex.com'
             ],
             'ya.ru'      => [
-                'rules'   => EmailNormalizer::PLUS_TAG,
+                'rules'   => EmailNormalizer::PLUS_TAG | EmailNormalizer::HYPHEN_TO_DOTS,
                 'aliasOf' => 'yandex.com'
             ]
         ];

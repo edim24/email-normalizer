@@ -57,5 +57,9 @@ class EmailNormalizerTest extends TestCase
         yield ['us.er.na.me-whatever@hyphen.test', 'us.er.na.me@hyphen.test'];
         yield ['us.er.na.me+whatever@dots.test', 'username+whatever@dots.test'];
         yield ['wh.at+ever@username.subdomain.test', 'username@subdomain.test'];
+
+        yield ['t.e.s.t+foobar@yandex.ru', 't.e.s.t@yandex.com'];
+        yield ['t-e-s-t@yandex.ru', 't.e.s.t@yandex.com'];
+        yield ['t-e-s-t+foobar@yandex.ru', 't.e.s.t@yandex.com'];
     }
 }
